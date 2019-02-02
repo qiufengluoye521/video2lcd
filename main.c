@@ -2,14 +2,10 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <config.h>
-#include <encoding_manager.h>
-#include <fonts_manager.h>
 #include <disp_manager.h>
-#include <input_manager.h>
 #include <pic_operation.h>
 #include <render.h>
 #include <string.h>
-#include <picfmt_manager.h>
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -24,17 +20,16 @@
 /* digitpic <freetype_file> */
 int main(int argc, char **argv)
 {	
-	int iError;
 
 	/* 初始化调试模块: 可以通过"标准输出"也可以通过"网络"打印调试信息
 	 * 因为下面马上就要用到DBG_PRINTF函数, 所以先初始化调试模块
 	 */
 
 	/* 注册调试通道 */
-	DebugInit();
+	//DebugInit();
 
 	/* 初始化调试通道 */
-	InitDebugChanel();
+	//InitDebugChanel();
 
 	if (argc != 2)
 	{
@@ -58,35 +53,35 @@ int main(int argc, char **argv)
 	AllocVideoMem(5);
 
     /* 注册输入设备 */
-	InputInit();
+	//InputInit();
     /* 调用所有输入设备的初始化函数 */
-	AllInputDevicesInit();
+	//AllInputDevicesInit();
 
     /* 注册编码模块 */
-    EncodingInit();
+    //EncodingInit();
 
     /* 注册字库模块 */
-	iError = FontsInit();
-	if (iError)
-	{
-		DBG_PRINTF("FontsInit error!\n");
-	}
+	//iError = FontsInit();
+	//if (iError)
+	//{
+	//	DBG_PRINTF("FontsInit error!\n");
+	//}
 
     /* 设置freetype字库所用的文件和字体尺寸 */
-	iError = SetFontsDetail("freetype", argv[1], 24);
-	if (iError)
-	{
-		DBG_PRINTF("SetFontsDetail error!\n");
-	}
+	//iError = SetFontsDetail("freetype", argv[1], 24);
+	//if (iError)
+	//{
+	//	DBG_PRINTF("SetFontsDetail error!\n");
+	//}
 
     /* 注册图片文件解析模块 */
-    PicFmtsInit();
+    //PicFmtsInit();
 
     /* 注册页面 */
-	PagesInit();
+	//PagesInit();
 
     /* 运行主页面 */
-	Page("main")->Run(NULL);
+	//Page("main")->Run(NULL);
 		
 	return 0;
 }

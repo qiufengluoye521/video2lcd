@@ -17,25 +17,20 @@ export STRIP OBJCOPY OBJDUMP
 CFLAGS := -Wall -Werror -O2 -g
 CFLAGS += -I $(shell pwd)/include
 
-LDFLAGS := -lm -lfreetype -lts -lpthread -ljpeg
+LDFLAGS := -lm -ljpeg
 
 export CFLAGS LDFLAGS
 
 TOPDIR := $(shell pwd)
 export TOPDIR
 
-TARGET := digitpic
+TARGET := video2lcd
 
 
 obj-y += main.o
 obj-y += display/
-obj-y += encoding/
-obj-y += fonts/
-obj-y += input/
-obj-y += debug/
 obj-y += render/
-obj-y += page/
-obj-y += file/
+obj-y += video/
 
 all : 
 	make -C ./ -f $(TOPDIR)/Makefile.build
